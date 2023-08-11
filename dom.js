@@ -22,17 +22,24 @@
 //     li[i].style.backgroundColor='lightgrey';
 // }
 // li[2].style.backgroundColor='#00b300';
-var header= document.querySelector('#main-header');
-header.style.borderBottom= 'solid 4px black';
+// var header= document.querySelector('#main-header');
+// header.style.borderBottom= 'solid 4px black';
 
-var input = document.querySelector('input');
-input.value='Enter Your Item';
+// var input = document.querySelector('input');
+// input.value='Enter Your Item';
 
-var submit=document.querySelector('input[type="submit"]');
-submit.value='Add';
+// var submit=document.querySelector('input[type="submit"]');
+// submit.value='Add';
 
-var secondItem=document.querySelector('.list-group-item:nth-child(2)');
-secondItem.style.backgroundColor='green';
+// var thirdItem = document.querySelector('.list-group-item:nth-child(3)');
+// thirdItem.style.display='none';
 
-var thirdItem = document.querySelector('.list-group-item:nth-child(3)');
-thirdItem.style.display='none';
+var odd=document.querySelectorAll('li:nth-child(odd)');
+for(let i=0; i<odd.length;i++){
+    odd[i].style.backgroundColor='#5cd65c';
+}
+
+var second= document.querySelector('.list-group-item:nth-child(2)');
+second.style.color='green';
+
+
