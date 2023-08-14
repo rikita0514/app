@@ -34,12 +34,94 @@
 // var thirdItem = document.querySelector('.list-group-item:nth-child(3)');
 // thirdItem.style.display='none';
 
-var odd=document.querySelectorAll('li:nth-child(odd)');
-for(let i=0; i<odd.length;i++){
-    odd[i].style.backgroundColor='#5cd65c';
-}
+// var odd=document.querySelectorAll('li:nth-child(odd)');
+// for(let i=0; i<odd.length;i++){
+//     odd[i].style.backgroundColor='#5cd65c';
+// }
 
-var second= document.querySelector('.list-group-item:nth-child(2)');
-second.style.color='green';
+// var second= document.querySelector('.list-group-item:nth-child(2)');
+// second.style.color='green';
+// second.style.fontWeight='bold';
+
+//Traversing the DOM
+
+var itemList = document.querySelector('#items');
+// console.log(itemList.parentNode);
+//itemList.parentNode.style.backgroundColor = 'lightgrey';
+// console.log(itemList.parentNode.parentNode.parentNode);
+
+// console.log(itemList.parentElement);
+// itemList.parentElement.style.backgroundColor = 'lightgrey';
+// console.log(itemList.parentElement);
+
+//console.log(itemList.childNodes);
+
+// console.log(itemList.children);
+// console.log(itemList.children[1]);
+//itemList.children[1].style.backgroundColor = '#ffff66';
+
+// console.log(itemList.firstChild);
+// console.log(itemList.firstElementChild);
+
+//itemList.firstElementChild.textContent = 'Hello';
+
+//console.log(itemList.lastChild);
+//console.log(itemList.lastElementChild);
+//itemList.lastElementChild.textContent = 'Done';
+
+//console.log(itemList.nextSibling);
+// console.log(itemList.nextElementSibling);
+
+// console.log(itemList.previousSibling);
+// console.log(itemList.previousElementSibling);
+//itemList.previousElementSibling.style.color = 'green';
+
+var newDiv = document.createElement('div');
+
+//To add .class
+newDiv.className = 'hello';
+
+//To add #id
+newDiv.id = 'hello1';
+
+//Add attribute
+newDiv.setAttribute('title', 'Hello Div');
+
+//create a text node
+var newDivText = document.createTextNode('Hello World');
+
+//Add text to div
+newDiv.appendChild(newDivText);
+
+var container = document.querySelector('header .container');
+var h1 = document.querySelector('header h1');
+
+console.log(newDiv);
+
+newDiv.style.fontSize = '20px';
+
+container.insertBefore(newDiv, h1);
 
 
+//To add Hello before Item I
+var nDiv = document.createElement('div');
+
+//To add .class
+nDiv.className = 'hello1';
+
+
+//Add attribute
+nDiv.setAttribute('title', 'Hello Div1');
+
+//create a text node
+var nDivText = document.createTextNode('Hello World');
+
+//Add text to div
+nDiv.appendChild(nDivText);
+
+var container1 = document.querySelector('#items');
+var h2 = document.querySelector('.list-group-item');
+
+console.log(nDiv);
+
+container1.insertBefore(nDiv, h2 );
