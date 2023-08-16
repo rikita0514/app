@@ -17,6 +17,7 @@ function addItem(e){
 
     //get input value
     var newItem = document.getElementById('item').value;
+    var newItem1 = document.getElementById('item1').value;
 
     //create new li element
     var li = document.createElement('li');
@@ -24,6 +25,7 @@ function addItem(e){
     li.className = 'list-group-item';
     //add text node with input value
     li.appendChild(document.createTextNode(newItem));
+    li.appendChild(document.createTextNode(newItem1))
 
     //create del button element
     var deletebtn = document.createElement('button');
