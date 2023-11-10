@@ -19,6 +19,9 @@ function addItem(e){
     var newItem = document.getElementById('item').value;
     var newItem1 = document.getElementById('item1').value;
 
+    var nItem = document.querySelector('#item');
+    var nItem1 = document.querySelector('#item1');
+
     //create new li element
     var li = document.createElement('li');
     //add class
@@ -40,6 +43,13 @@ function addItem(e){
 
 
     itemList.appendChild(li);
+
+    saveItemToLocalStorage(newItem + ' ' + newItem1);
+
+    
+
+    nItem.value='';
+    nItem1.value='';
 }
 
 function removeItem(e){
@@ -47,6 +57,7 @@ function removeItem(e){
         if(confirm('Are you sure?')){
             var li = e.target.parentElement;
             itemList.removeChild(li);
+            removeFromLocalStorage(li);
         }
     }
 }
@@ -65,5 +76,59 @@ function filterItems(e){
         item.style.display='none';
     }
    });
+}
+
+function saveItemToLocalStorage(item) {
+    var items;
+    if (localStorage.getItem('items') === null) {
+        items = [];
+    } else {
+        items = JSON.parse(localStorage.getItem('items'));
+    }
+
+    items.push(item);
+    localStorage.setItem('items', JSON.stringify(items));
+}
+
+// Get items from local storage and display them on page load
+function getItemsFromLocalStorage() {
+    var items;
+    if (localStorage.getItem('items') === null) {
+        items = [];
+    } else {
+        items = JSON.parse(localStorage.getItem('items'));
+    }
+
+    items.forEach(function (item) {
+        var li = document.createElement('li');
+        li.className = 'list-group-item';
+        li.appendChild(document.createTextNode(item));
+
+        var deleteBtn = document.createElement('button');
+        deleteBtn.className = 'btn btn-danger btn-sm float-right delete';
+        deleteBtn.appendChild(document.createTextNode('X'));
+        li.appendChild(deleteBtn);
+
+        var editBtn = document.createElement('button');
+        editBtn.className = 'btn btn-default btn-outline-secondary btn-sm float-right btn-success edit';
+        editBtn.appendChild(document.createTextNode('Edit'));
+        li.appendChild(editBtn);
+
+        itemList.appendChild(li);
+    });
+}
+
+// Remove item from local storage
+function removeFromLocalStorage(item) {
+    var items;
+    if (localStorage.getItem('items') === null) {
+        items = [];
+    } else {
+        items = JSON.parse(localStorage.getItem('items'));
+    }
+
+    var text = item.firstChild.textContent;
+    items.splice(items.indexOf(text), 1);
+    localStorage.setItem('items', JSON.stringify(items));
 }
 
